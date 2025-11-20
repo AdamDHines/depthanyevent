@@ -4,4 +4,19 @@ log/
 weights/
 .vscode/
 samples/
-results/
+results/# pixi environments
+.pixi/*
+!.pixi/config.toml
+
+models/dav2/distillation_dsec/
+models/dav2/distillation_mvsec/
+models/dav2/finetuned_dsec/
+models/dav2/finetuned_mvsec/
+models/dav2/metric_dsec/
+models/dav2/synth/
+models/rec_dav2/distillation_dsec/
+models/rec_dav2/distillation_mvsec/
+models/rec_dav2/finetuned_dsec/
+models/rec_dav2/finetuned_mvsec/
+models/rec_dav2/metric_dsec/
+models/rec_dav2/synth/

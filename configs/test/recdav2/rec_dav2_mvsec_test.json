@@ -4,7 +4,7 @@
     "gpu": 0,
     "data_loader": {
         "dataset": "mvsec",
-        "datapath": "/home/luca/Scrivania/datasets/MVSEC",
+        "datapath": "/media/adam/vprdatasets/data/MVSEC",
         "split": "test",
         "concatenate_sequences": false,
         "slicing": {

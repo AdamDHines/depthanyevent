@@ -1,0 +1,82 @@
+[workspace]
+authors = ["Adam Hines <adam.hines@qut.edu.au>"]
+channels = ["conda-forge"]
+name = "depthanyevent"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[system-requirements]
+cuda = "12"
+
+[tasks]
+# Weights and dataset commands
+
+# Test tasks
+dav2mvsec = {cmd = "python test.py --config configs/test/dav2/dav2_mvsec_test.json --csv_path results/tab1_dav2_mvsec.csv --loadmodel models/dav2/synth/synth.pth"}
+recdav2mvsec = {cmd = "python test.py --config configs/test/recdav2/rec_dav2_mvsec_test.json --csv_path results/tab1_rec_dav2_mvsec.csv --loadmodel models/rec_dav2/synth/synth.pth"}
+dav2dsec = {cmd = "python test.py --config configs/test/dav2/dav2_dsec_test.json --csv_path results/tab1_dav2_dsec.csv --loadmodel models/dav2/synth/synth.pth"}
+recdav2dsec = {cmd = "python test.py --config configs/test/recdav2/rec_dav2_dsec_test.json --csv_path results/tab1_rec_dav2_dsec.csv --loadmodel models/rec_dav2/synth/synth.pth"}
+
+[dependencies]
+cmapy = "*"
+contourpy = "*"
+cycler = "*"
+filelock = "*"
+fonttools = "*"
+fsspec = "*"
+h5py = "*"
+hdf5plugin = "*"
+imageio = "*"
+Jinja2 = "*"
+joblib = "*"
+kiwisolver = "*"
+kornia = "*"
+kornia-rs = "*"
+lazy_loader = "*"
+llvmlite = "*"
+MarkupSafe = "*"
+matplotlib = "*"
+mpmath = "*"
+networkx = "*"
+numba = "*"
+numpy = "*"
+opencv = "*"
+packaging = "*"
+pillow = "*"
+pyparsing = "*"
+python-dateutil = "*"
+PyYAML = "*"
+scikit-image = "*"
+scikit-learn = "*"
+scipy = "*"
+six = "*"
+sympy = "*"
+threadpoolctl = "*"
+tifffile = "*"
+pytorch = "*"
+torchaudio = "*"
+torchvision = "*"
+tqdm = "*"
+triton = "*"
+typing_extensions = "*"
+
+[target.linux-64.dependencies]
+cuda-version = "*"
+pytorch-gpu = "*"
+cuda-cudart-dev = "*"
+cuda-crt = "*"
+cudnn = "*"
+libcusparse-dev = "*"
+cuda-driver-dev = "*"
+cuda-nvcc = "*"
+cuda-nvrtc-dev = "*"
+cuda-nvtx-dev = "*"
+cuda-nvml-dev = "*"
+cuda-profiler-api = "*"
+cusparselt = "*"
+libcublas-dev = "*"
+libcudss-dev = "*"
+libcufile-dev = "*"
+libcufft-dev = "*"
+libcurand-dev = "*"
+libcusolver-dev = "*"

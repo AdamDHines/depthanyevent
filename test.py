@@ -272,6 +272,12 @@ def print_and_save(args, config, metrics, seq="MEAN"):
         metric_values += f" {metrics[k]:.6f} &"
     print(metric_values)
 
+    # Check if the parent dir for CSV path exists
+    if args.csv_path is not None:
+        parent_dir = os.path.dirname(args.csv_path)
+        if parent_dir != '' and not os.path.exists(parent_dir):
+            os.makedirs(parent_dir)
+
     # Save to CSV if path specified
     if args.csv_path is not None:
         if os.path.exists(args.csv_path):
