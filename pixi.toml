@@ -17,12 +17,22 @@ recdav2mvsec = {cmd = "python test.py --config configs/test/recdav2/rec_dav2_mvs
 dav2dsec = {cmd = "python test.py --config configs/test/dav2/dav2_dsec_test.json --csv_path results/tab1_dav2_dsec.csv --loadmodel models/dav2/synth/synth.pth"}
 recdav2dsec = {cmd = "python test.py --config configs/test/recdav2/rec_dav2_dsec_test.json --csv_path results/tab1_rec_dav2_dsec.csv --loadmodel models/rec_dav2/synth/synth.pth"}
 
+# Data tasks
+tencode = {cmd = "pixi run python tencode.py --hdf5-path /media/adam/vprdatasets/data/event-datasets/brisbane_event/sunset1/sunset1.hdf5 --out-dir ./tencode_sunset1 --dt-ms 50"}
+
+# Prediction tasks
+prediction = {cmd = "pixi run python prediction.py  --hdf5-path /media/adam/vprdatasets/data/event-datasets/brisbane_event/sunset1/sunset1.hdf5 --outdir ./depth_out --loadmodel models/rec_dav2/synth/synth.pth --config configs/test/recdav2/rec_dav2_mvsec_test.json --dt-ms 50 --time-scale 1e-9 --mixed_precision"}
+keypoint = {cmd = "pixi run python depth_keypoints.py --save-vis --max-kp 600 --depth-bins 4"}
+rerank = {cmd = "pixi run python rerank.py --top-k 100"}
+evalkp = {cmd = "pixi run python evalkp.py"}
+evalorb = {cmd = "pixi run python eval_orb.py --query-depth-root ./depth_out/sunset1 --ref-depth-root ./depth_out/sunset2 --ref-kp-dir ./akaze/sunset2 --query-kp-dir ./akaze/sunset1 --outdir ./vizmatch_akaze"}
+
 [dependencies]
 cmapy = "*"
 contourpy = "*"
 cycler = "*"
 filelock = "*"
-fonttools = "*"
+fonttools = "*" 
 fsspec = "*"
 h5py = "*"
 hdf5plugin = "*"
@@ -59,6 +69,7 @@ torchvision = "*"
 tqdm = "*"
 triton = "*"
 typing_extensions = "*"
+prettytable = "*"
 
 [target.linux-64.dependencies]
 cuda-version = "*"
